@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form action="/register" mwthod="post">
+<form action="/register" method="post">
     @csrf
     <div class="container">
       <h1>Admin Register</h1>
@@ -16,8 +16,8 @@
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" id="psw" required>
 
       <hr>
 

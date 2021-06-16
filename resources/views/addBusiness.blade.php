@@ -28,6 +28,13 @@
       <label for="sudescription">Description</label>
       <textarea  name="description" placeholder="Write something.." style="height:200px"></textarea>
 
+      <label for="sudescription">Category</label>
+      <br>
+      @foreach ($categories as $category )
+        <input type="checkbox"  name="category[]" value={{$category->id}}>{{$category->name}}
+     @endforeach
+
+<br><br><br>
       <input type="submit" value="Create Business">
 
     </form>

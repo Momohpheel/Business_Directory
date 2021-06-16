@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::view('/', 'home');
+Route::get('/', [App\Http\Controllers\AdminController::class, 'home']);
 //Auth::routes();
 
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/register', 'auth.register')->name('register');
 
-Route::view('/add-business', 'addBusiness');
+Route::get('/add-business', [App\Http\Controllers\AdminController::class, 'addBusiness'])->middleware('web');
 Route::view('/add-category', 'addCategory');
 
 Route::post('/login', [App\Http\Controllers\AdminController::class, 'login']);
