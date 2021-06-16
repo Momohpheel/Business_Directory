@@ -37,41 +37,40 @@
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
+
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @if(isset($user))
-                        <a href="{{ url('/home') }}"  style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;" class="text-sm text-gray-700 underline">Home</a>
 
-                        <a href="{{ url('/add-business') }}" style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;" class="text-sm text-gray-700 underline">Add business</a>
+                        <a href="{{ url('/') }}" class="text-sm text-gray-700 underline" style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;">Go Back</a>
 
-                        <a href="{{ url('/add-category') }}" style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;" class="text-sm text-gray-700 underline">Add Category</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline" style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;">Log in</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline" style="background-color: black; padding: 15px 14px; text-decoration: none; color: white;">Register</a>
-                        @endif
-                    @endauth
                 </div>
-            @endif
+
 
 
                 <div class="container">
 
-                    <div class="row">
-                        @if(count($business) > 0)
-                            @foreach($business as $work)
 
-                                <div class="col-sm-2 card" >
-                                    <a href="/business/{{$work->id}}"><div class="text">{{$work->name}}</div></a>
-                                    <div class="middle">
-                                        <div class="row">
-                                        @if(count($work->category) > 0)
-                                            @foreach($work->category as $category)
-                                                <div class="col-xs-4">
-                                                    <small class="small">{{$category->name}}</small>
-                                                    <div></div>
-                                                </div>
+                        @if($business)
+                            <h1 style="font-size: 900%">{{$business->name}}</h1>
+                            <h5 for="">-- Description --</h5>
+                                <p>{{$business->description}}</p>
+                                <h5 for="">-- Website URL --</h5>
+                                <p>{{$business->website_url}}</p>
+                                <h5 for="">-- Business Email --</h5>
+                                <p>{{$business->email}}</p>
+                                <h5 for="">-- Business Phone number --</h5>
+                                <p>{{$business->phone}}</p>
+                                <h5 for="">-- Business Address --</h5>
+                                <p>{{$business->address}}</p>
+
+                                <h5 for="">-- Categories --</h5>
+                                        @if(count($business->category) > 0)
+                                            @foreach($business->category as $category)
+                                                <ul>
+                                                    <li>{{$category->name}}</li>
+                                                </ul>
+                                                    {{-- <small class="small">{{$category->name}}</small> --}}
+
                                             @endforeach
                                         @endif
                                         </div>
@@ -83,12 +82,11 @@
                                 </div>
 
 
-                            @endforeach
                         @endif
 
 
                     </div>
-                </div>
+
 
          </div>
     </body>

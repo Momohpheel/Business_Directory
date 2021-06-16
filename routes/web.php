@@ -27,6 +27,8 @@ Route::view('/register', 'auth.register')->name('register');
 Route::get('/add-business', [App\Http\Controllers\AdminController::class, 'addBusiness'])->middleware('web');
 Route::view('/add-category', 'addCategory');
 
+Route::get('/business/{id}', [App\Http\Controllers\AdminController::class, 'getEachBusinessListing']);
+
 Route::post('/login', [App\Http\Controllers\AdminController::class, 'login']);
 Route::post('/register', [App\Http\Controllers\AdminController::class, 'register']);
 Route::post('/business', [App\Http\Controllers\AdminController::class, 'createBusinessListing']);

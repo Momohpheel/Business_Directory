@@ -12,14 +12,9 @@ class AdminController extends Controller
 {
     public function home(){
         $data = array();
-        $businesses = Business::find(1);
-        dd($businesses->category);
-        foreach ($businesses as $business){
-            dd($business->category);
-            array_push($data, $business->category);
-        }
-        dd($data);
-        return view('home')->with('business', $data);
+        $businesses = Business::all()->load('category');
+
+        return view('home')->with('business', $businesses);
     }
 
     public function login(Request $request){
@@ -137,8 +132,10 @@ class AdminController extends Controller
         $business->delete();
     }
 
-    public function getBusinessListingbyCateogory(Request $request){
+    public function getEachBusinessListing($id){
 
+        $business = Business::find($id)->load('category');
+        return view('eachBusiness')->with('business', $business);
 
 
     }

@@ -15,7 +15,7 @@ class CreateBusinessCategoriesTable extends Migration
     {
         Schema::create('business_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('business_id')->constrained();
+            $table->foreignId('business_id')->constrained('businesses');
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });
