@@ -28,7 +28,7 @@ Route::get('/add-business', [App\Http\Controllers\AdminController::class, 'addBu
 Route::view('/add-category', 'addCategory');
 
 Route::get('/business/{id}', [App\Http\Controllers\AdminController::class, 'getEachBusinessListing']);
-
+Route::get('/search', [App\Http\Controllers\AdminController::class, 'search']);
 Route::post('/login', [App\Http\Controllers\AdminController::class, 'login']);
 Route::post('/register', [App\Http\Controllers\AdminController::class, 'register']);
 Route::post('/business', [App\Http\Controllers\AdminController::class, 'createBusinessListing']);

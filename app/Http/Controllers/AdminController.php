@@ -140,13 +140,11 @@ class AdminController extends Controller
 
     }
 
-    public function search(Request $request){
+    public function searchapi(Request $request){
 
         $business = Business::where('name','LIKE','%'.$request->data.'%')
                         ->orWhere('description','LIKE','%'.$request->data.'%')
-                        ->orWhere('address','LIKE','%'.$request->data.'%')
-                        ->orWhere('phone','LIKE','%'.$request->data.'%')
-                        ->orWhere('email','LIKE','%'.$request->data.'%')->load('category');
+                        ->load('category');
 
         if(count($business) > 0){
             return response()->json([
@@ -161,6 +159,19 @@ class AdminController extends Controller
             ], 400);
 
         }
+
     }
+        public function search(Request $request){
+
+            $business = Business::where('name','LIKE','%'.$request->data.'%')
+                            ->orWhere('description','LIKE','%'.$request->data.'%')
+                            ->get();
+
+            if(count($business) > 0){
+                return view('home')->with('business',$business->load('category'));
+            }else{
+                return view('home');
+            }
+        }
 
 }
