@@ -140,6 +140,27 @@ class AdminController extends Controller
 
     }
 
-    public function search(Request $request){}
+    public function search(Request $request){
+
+        $business = Business::where('name','LIKE','%'.$request->data.'%')
+                        ->orWhere('description','LIKE','%'.$request->data.'%')
+                        ->orWhere('address','LIKE','%'.$request->data.'%')
+                        ->orWhere('phone','LIKE','%'.$request->data.'%')
+                        ->orWhere('email','LIKE','%'.$request->data.'%')->load('category');
+
+        if(count($business) > 0){
+            return response()->json([
+                'message' => "Search Results",
+                'data' => $business
+            ], 200);
+
+        }else{
+            return response()->json([
+                'message' => "No Details found. Try to search again!",
+                'error' => true
+            ], 400);
+
+        }
+    }
 
 }
