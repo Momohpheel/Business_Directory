@@ -26,11 +26,11 @@ class AdminController extends Controller
         ]);
 
         $user = User::where('email', $validated['email'])->first();
-
+        $business = Business::all()->load('category');
         if ($user) {
             $check = Hash::check($validated['password'], $user->password);
             if ($check){
-                return view('home')->with('user', $user);
+                return view('home')->with(['user'=> $user, 'business' => $business]);
             }else{
                 return redirect('/login');
             }
