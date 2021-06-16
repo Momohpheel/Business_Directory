@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Register</title>
-    <link rel="stylesheet" href="{{ asset('app.css') }}">
+    <link rel="stylesheet" href="{{ url('app.css') }}">
 </head>
 
 <body>
