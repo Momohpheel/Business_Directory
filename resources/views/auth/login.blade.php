@@ -20,7 +20,9 @@
       <button type="submit">Login</button>
 
     </div>
-
+    <div class="container signin">
+        <p>You don't have an account? <a href="/register">Sign up</a>.</p>
+      </div>
 
   </form>
 </body>
