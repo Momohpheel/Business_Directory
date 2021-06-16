@@ -51,7 +51,7 @@ class AdminController extends Controller
         $user->password = Hash::make($validated['password']);
         $user->save();
 
-        return redirect('/login');
+        return view('auth.login');
 
     }
 
